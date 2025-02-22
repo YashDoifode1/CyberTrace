@@ -1,0 +1,20 @@
+CREATE TABLE visitor_logs (
+    id INT AUTO_INCREMENT PRIMARY KEY,
+    ip VARCHAR(45) NOT NULL,                   -- User's IP Address (IPv4/IPv6)
+    real_ip VARCHAR(45) NOT NULL,               -- Actual External IP
+    webrtc_ip VARCHAR(45) DEFAULT NULL,         -- WebRTC Leak IP (if detected)
+    dns_leak_ip VARCHAR(45) DEFAULT NULL,       -- DNS Leak IP (if detected)
+    user_agent TEXT NOT NULL,                   -- Browser's User-Agent
+    screen_resolution VARCHAR(20) DEFAULT NULL, -- Screen Resolution (e.g., 1920x1080)
+    language VARCHAR(10) DEFAULT NULL,          -- Browser Language (e.g., en-US)
+    timezone VARCHAR(50) DEFAULT NULL,          -- Detected Timezone
+    cookies_enabled ENUM('Yes', 'No') DEFAULT 'No', -- Whether Cookies are enabled
+    cpu_cores INT DEFAULT NULL,                 -- Number of CPU Cores
+    ram VARCHAR(10) DEFAULT NULL,               -- Approximate RAM in GB
+    gpu VARCHAR(255) DEFAULT NULL,              -- GPU Information
+    battery VARCHAR(10) DEFAULT NULL,           -- Battery Level (if available)
+    referrer TEXT DEFAULT NULL,                 -- Referrer URL
+    plugins TEXT DEFAULT NULL,                  -- List of Installed Browser Plugins
+    digital_dna CHAR(64) NOT NULL,              -- SHA-256 Hash (Digital Fingerprint)
+    created_at TIMESTAMP DEFAULT CURRENT_TIMESTAMP -- Timestamp of Data Insertion
+);
